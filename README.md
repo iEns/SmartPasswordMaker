@@ -3,7 +3,9 @@
 Smart Password Maker is a ***new innovative*** approach to creating passwords for websites and apps.
 Smart Password Maker can create unique password for each user on each website, and recreate the passwords again when you need to log in again.
 
-### Main features:
+![Screenshot](screenshot.png)
+
+### Main features
 - Creates passwords that are **unique to you**.
 - Creates passwords that are **unique to every website** or app that you use passwords in.
 - Creates password that contain at least two lowercase characters, two uppercase characters, two numbers and two special characters.
@@ -14,9 +16,16 @@ Smart Password Maker can create unique password for each user on each website, a
 - On mobile devices you can save a shortcut to the home screen, turning the website into a webapp.
 - Open Source. You can verify the source code, and you can run it from your own server.
 
-![Screenshot](screenshot.png)
+### Requirements
+- A fairly modern web browser with JavaScript enabled.
 
-### How to use:
+### Local installation
+Copy files from the html folder to a folder of your choice and open index.htm in your favorite browser.
+
+### Webserver installation
+Copy files from the html folder to your webserver. Subdirectories are not needed for normal operation. Make sure that index.htm is the default file.
+
+### How to use
 1. Select a good secret passphrase that you will use to generate all your other passwords.
 2. Type your secret passphrase into the passphrase field.
 3. Type the name of the website that you want to generate a password for (for example you can type Google or Apple or Facebook).
