@@ -42,7 +42,7 @@ Copy files from the html folder to your webserver. Subdirectories are not needed
 - The algorithm generating the passwords is based on SHA256
 - If your secret passphrase is unique, then your passwords are unique to you and to the websites that you use them on.
 - All your passwords can be generated again, as long as your secret passphrase and the website name are the same as when you first generated your passwords.
-- You don't type your username into the Smart Password Generator. If a hacker somehow intercepts the passwords as they are generated, there is no direct correllation to your username. A password without a usename is worthless.
+- You don't type your username into the Smart Password Generator. If a hacker somehow intercepts the passwords as they are generated, there is no direct correlation to your username. A password without a username is worthless.
 
 ### What is the "Verify" image in the upper right corner?
 1. It is important that you type your secret passphrase exactly the same every time you use Smart Password Maker.
