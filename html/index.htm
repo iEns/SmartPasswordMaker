@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html style="overscroll-behavior: contain;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=550, user-scalable=yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--link rel="apple-touch-icon" href="app-icon.png" /-->
+		<title>Smart Password Maker</title>
+		<link rel="stylesheet" type="text/css" href="pwdmaker.css">
+	</head>
+	<body onload="init()" >
+
+		<div id="header">
+			<div id="Title"></div>
+		</div>
+		<div id="main">
+			<div id="codewriter">
+				<div id="passwordPromptContainer">
+					<div id="passwordPrompt">Secret:</div> <input class="inputField" id="passphrase" name="passphrase" maxlength="100" type="password" oninput="passphraseChanged()" onkeypress="handlePassphraseInput(event)"/>
+					<div id="connector"></div>
+					<div class="watermarkContainer">
+						<div class="sectionTitle">Verify:</div>
+						<div id="watermark">
+							<div id="verificationKey">0</div>
+							<div id="verificationCrossH"></div>
+							<div id="verificationCrossV"></div>
+							<div id="watermarkFilter">
+								<img id="watermarkImage" src="watermark.png" alt="watermark">
+							</div>
+						</div>
+						<div id="watermarkBloom"></div>
+					</div>
+				</div>
+				<div id="websitePromptContainer">
+					<div id="websitePrompt">App/Website:</div> <input class="inputField" id="website" name="website" maxlength="100" type="text" pattern="[a-zA-Z]+" oninput="websiteChanged()" onkeypress="handlewebsiteInput(event)"/>
+				</div>
+				<div id="connector2"></div>
+				<div class="resultContainer">
+					<div id="result"></div>
+					<div id="copyToClipboard" class="button" onclick="copyToClipboard()">Copy to clipboard</div>
+				</div>
+				<div class="OptionsContainer">
+					<div id="checkboxPrompt" class="prompt">Show generated password on screen:</div><input class="checkbox" id="showPassword" type="checkbox" oninput="makePassword()" onclick="document.getElementById('website').focus()">
+				</div>
+				<div id="notification">Password copied to clipboard</div>
+			</div>
+		</div>
+		<div id="footer">
+			Open Source by iEns. Project page: <a href="https://github.com/iens/smartpasswordmaker">github.com/iens/smartpasswordmaker</a>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="pwdmaker.js"></script>
+</html>
