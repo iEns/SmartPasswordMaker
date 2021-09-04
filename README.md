@@ -13,7 +13,7 @@ Smart Password Maker can create unique password for each user on each website, a
 - The passwords can always be regenerated in the future and **they don't change** if your secret passphrase and the website name are the same as when you first generated the passwords.
 - Works on just about every platform and in every browser.
 - Works on mobile devices
-- On mobile devices you can save a shortcut to the home screen, turning the website into a webapp.
+- On mobile devices you can save a shortcut to the home screen, turning the website into a WebApp.
 - Open Source. You can verify the source code, and you can run it from your own server.
 
 ### Requirements

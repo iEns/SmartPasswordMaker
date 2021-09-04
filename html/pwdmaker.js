@@ -59,12 +59,12 @@ function passwordFullLength() {
 }
 
 function init() {
-	document.getElementById('passphrase').focus();
+	document.getElementById('secret').focus();
 	document.getElementById("Title").innerHTML=appTitle;
 	document.title=appTitle;
 }
 
-function passphraseChanged() {
+function secretChanged() {
 	makeVerificationKey();
 	makePassword();
 }
@@ -73,15 +73,15 @@ function websiteChanged() {
 	makePassword();
 }
 
-function handlePassphraseInput(e) {
-	// If Enter is pressed in the passphrase field, jump to the website field
+function handleSecretInput(e) {
+	// If Enter is pressed in the secret field, jump to the website field
 	if (e.keyCode === 13) {
 		e.preventDefault();
 		document.getElementById("website").focus();
 	}
 }
 
-function handlewebsiteInput(e) {
+function handleWebsiteInput(e) {
 	//check if the keypress was an Enter in the website field
 	if (e.keyCode === 13) {
 		e.preventDefault();
@@ -90,9 +90,9 @@ function handlewebsiteInput(e) {
 }
 
 function makeVerificationKey() {
-	passphrase=document.getElementById("passphrase").value;
-	if (passphrase.length > 0) {
-		hashArray=SHA256(passphrase);
+	secret=document.getElementById("secret").value;
+	if (secret.length > 0) {
+		hashArray=SHA256(secret);
 		verificationNumber = (hashArray[1].toString(16).padStart(2,"0") + "-" + hashArray[2].toString(16).padStart(2,"0") + "-" + hashArray[3].toString(16).padStart(2,"0")).toUpperCase();
 		watermarkBackgroundColor = "#" + (hashArray[4] + (hashArray[5] * 256) + (hashArray[6] * 65536)).toString(16).padStart(6,"0");
 		verificationNumberFrameColor = "#" + (hashArray[7] + (hashArray[8] * 256) + (hashArray[9] * 65536)).toString(16).padStart(6,"0");
@@ -131,17 +131,17 @@ function makeVerificationKey() {
 
 function makePassword() {
 	// get information from web form
-	passphrase=document.getElementById("passphrase").value;
+	secret=document.getElementById("secret").value;
 	website=document.getElementById("website").value;
 	
-	if (website.length < 1 || passphrase.length < 1) {
+	if (website.length < 1 || secret.length < 1) {
 		// Don't calculate a password if no website is present
 		document.getElementById("result").innerHTML = "";
 		return("");
 	}
 
-	// convert passphrase and website into a password
-	hashArray = generateHashArrayFromPasswordAndwebsite(passphrase,website);
+	// convert secret and website into a password
+	hashArray = generateHashArrayFromPasswordAndwebsite(secret,website);
 	rawPassword=generatePasswordFromHash(hashArray);
 	trimmedPassword = rawPassword.substr(0,passwordLength);
 	fixedPassword = enforceRules(trimmedPassword,hashArray);	
@@ -183,9 +183,9 @@ function clearClipboard() {
 	navigator.clipboard.writeText('Clear');
 }
 
-function generateHashArrayFromPasswordAndwebsite(passphrase,website) {
-	// Create a long string from passphrase, website
-	saltedString="iEns" + passphrase + "iEns" + cleanwebsite(website) + "iEns";
+function generateHashArrayFromPasswordAndwebsite(secret,website) {
+	// Create a long string from secret, website
+	saltedString="iEns" + secret + "iEns" + cleanWebsite(website) + "iEns";
 	hashArray=SHA256(saltedString);
 	return(hashArray);
 }
@@ -199,11 +199,11 @@ function generatePasswordFromHash(hashArray) {
 	return(passwordBuilderString);
 }
 
-function cleanwebsite(password) {
+function cleanWebsite(website) {
 	// Removes anything but numbers and letters
-	password = password.toLowerCase();
-	password = password.replace(/[^a-z0-9]/gi, '');
-	return(password);
+	website = website.toLowerCase();
+	website = website.replace(/[^a-z0-9]/gi, '');
+	return(website);
 }
 
 function checkRule(charSetNumber, password) {
