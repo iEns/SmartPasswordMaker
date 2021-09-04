@@ -24,7 +24,7 @@ describe("Smart Password Maker", function() {
 	it("should be able to calculate correct password", function() {
 		passwordLength = 16;
 		groupLength = 4;
-		document.getElementById("passphrase").value = "test1234";
+		document.getElementById("secret").value = "test1234";
 		document.getElementById("website").value = "testWebSite";
 		expect(makePassword()).toEqual("E5rs-baJ%-mku@-86Bn");
 		document.getElementById("website").value = "testwebsite";

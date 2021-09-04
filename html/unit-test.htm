@@ -14,7 +14,7 @@
 			<div id="main">
 				<div id="codewriter">
 					<div id="passwordPromptContainer">
-						<div id="passwordPrompt">Secret:</div> <input class="inputField" id="passphrase" name="passphrase" maxlength="100" type="password" oninput="passphraseChanged()" onkeypress="handlePassphraseInput(event)"/>
+						<div id="passwordPrompt">Secret:</div> <input class="inputField" id="secret" name="secret" maxlength="100" type="password" oninput="secretChanged()" onkeypress="handleSecretInput(event)"/>
 						<div id="connector"></div>
 						<div class="watermarkContainer">
 							<div class="sectionTitle">Verify:</div>
@@ -30,7 +30,7 @@
 						</div>
 					</div>
 					<div id="websitePromptContainer">
-						<div id="websitePrompt">App/Website:</div> <input class="inputField" id="website" name="website" maxlength="100" type="text" pattern="[a-zA-Z]+" oninput="websiteChanged()" onkeypress="handlewebsiteInput(event)"/>
+						<div id="websitePrompt">App/Website:</div> <input class="inputField" id="website" name="website" maxlength="100" type="text" pattern="[a-zA-Z]+" oninput="websiteChanged()" onkeypress="handleWebsiteInput(event)"/>
 					</div>
 					<div id="connector2"></div>
 					<div class="resultContainer">
