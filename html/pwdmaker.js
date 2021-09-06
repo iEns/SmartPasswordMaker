@@ -90,6 +90,7 @@ function handleWebsiteInput(e) {
 }
 
 function makeVerificationKey() {
+	// Calculate and display the Verification image
 	secret=document.getElementById("secret").value;
 	if (secret.length > 0) {
 		hashArray=SHA256(secret);
@@ -108,8 +109,8 @@ function makeVerificationKey() {
 		document.getElementById("verificationKey").style.transform = "rotate(" + rotate + "deg)";
 		document.getElementById("verificationKey").style.borderColor = verificationNumberFrameColor;
 		document.getElementById("verificationKey").style.background = verificationNumberBackgroundColor;
-		document.getElementById("watermark").style.color=verificationNumberTextColor;
-		document.getElementById("watermark").style.background=watermarkBackgroundColor;
+		document.getElementById("watermark").style.color = verificationNumberTextColor;
+		document.getElementById("watermark").style.background = watermarkBackgroundColor;
 		document.getElementById("watermarkBloom").style.boxShadow="0 0 17px 3px " + watermarkBackgroundColor+"80";
 		document.getElementById("verificationCrossH").style.background = verificationCrossColorH+"50";
 		document.getElementById("verificationCrossV").style.background = verificationCrossColorV+"50";
@@ -120,13 +121,12 @@ function makeVerificationKey() {
 		document.getElementById("verificationKey").style.transform = "rotate(-20deg)";
 		document.getElementById("verificationKey").style.borderColor = "#1a1a2e";
 		document.getElementById("verificationKey").style.background = "#1a1a2e";
-		document.getElementById("watermark").style.color="#1a1a2e";
-		document.getElementById("watermark").style.background="#1a1a2e";
+		document.getElementById("watermark").style.color = "#1a1a2e";
+		document.getElementById("watermark").style.background = "#1a1a2e";
 		document.getElementById("watermarkBloom").style.boxShadow="0 0 17px 3px #00000080";
 		document.getElementById("verificationCrossH").style.background = "#00000000";
 		document.getElementById("verificationCrossV").style.background = "#00000000";
 	}
-
 }
 
 function makePassword() {
@@ -275,7 +275,8 @@ function fixRule(brokenRule,password,hashArray) {
 	// find first character that we can change. We offset the counting by brokenrule, to make sure that we don't always change the very first character.
 	charPositionToReplace = findFirstCharacterFromCharSet(leastBrokenRule,password,brokenRule);
 	newChar=charSets[brokenRule][(hashArray[charPositionToReplace]) % charSetsLength[brokenRule]];
-	password=password.substring(0,charPositionToReplace) + newChar + password.substr(charPositionToReplace+1);
+	//password=password.substring(0,charPositionToReplace) + newChar + password.substr(charPositionToReplace+1);
+	password=password.replaceAt(charPositionToReplace, newChar);
 	return(password);
 }
 
