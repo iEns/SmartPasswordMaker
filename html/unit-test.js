@@ -10,10 +10,10 @@ describe("Smart Password Maker", function() {
 		expect(passwordFullLength()).toEqual(17);
 		passwordLength = 15;
 		expect(passwordFullLength()).toEqual(18);
-		passwordLength = 16;
-		expect(passwordFullLength()).toEqual(19);
 		passwordLength = 17;
 		expect(passwordFullLength()).toEqual(21);
+		passwordLength = 16;
+		expect(passwordFullLength()).toEqual(19);
 	});
 	
 	it("should be able to calculate correct SHA256", function() {
@@ -50,5 +50,41 @@ describe("Smart Password Maker", function() {
 		expect(findLeastBrokenRule("aBVCX$a%!@!453")).toEqual(3);
 		expect(findLeastBrokenRule("aB34VC71X2$a%9!@!453")).toEqual(2);
 	});
+	
+	it("should be able to find and fix repeated chars", function() {
+		//createPasswordWithTrippleRepeatedChars();
+		document.getElementById("secret").value = "test";
+		document.getElementById("website").value = "aajh";
+		pwd = makePassword()
+		expect(pwd).toEqual("vvx4-!%JR-N5Xx-SkCN");
+		document.getElementById("website").value = "aato";
+		pwd = makePassword()
+		expect(pwd).toEqual("a7y#-3@rA-qEF2-7VVX");
+	});
+	
+	function createPasswordWithTrippleRepeatedChars() {
+		secret = "test";
+		for (var c1="a".charCodeAt(0); c1<="z".charCodeAt(); c1++) {
+			for (var c2="a".charCodeAt(0); c2<="z".charCodeAt(); c2++) {
+				for (var c3="a".charCodeAt(0); c3<="z".charCodeAt(); c3++) {
+					for (var c4="a".charCodeAt(0); c4<="z".charCodeAt(); c4++) {
+						website = String.fromCharCode(c1) + String.fromCharCode(c2) + String.fromCharCode(c3) + String.fromCharCode(c4);
+						hashArray = generateHashArrayFromPasswordAndwebsite(secret,website);
+						rawPassword=generatePasswordFromHash(hashArray);
+						password = rawPassword.substr(0,passwordLength);
+						for (var i=password.length-1; i<=password.length; i++) {
+							if (password.charAt(i) == password.charAt(i-1) && password.charAt(i-1) == password.charAt(i-2)) {
+								//We found a duplicate character. 
+								document.getElementById("secret").value = secret;
+								document.getElementById("website").value = website;
+								return;
+							}
+						}
+					}
+				}
+			}
+		}	
+	}
+
 
 });
