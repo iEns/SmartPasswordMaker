@@ -34,15 +34,19 @@ Copy files from the html folder to your webserver. Subdirectories are not needed
 6. When you want to log in to a website, simply type your secret passphrase into the passphrase field, the name of the website into the website field, and now you get the SAME password.
 
 ### Why is it safe?
+- The algorithm generating the passwords is based on SHA256
+- It is impossible to calculate the secret from the generated password (But it can be brute forced. See below).
 - The password is generated in your browser.
 - No information is transmitted to the internet.
 - Nothing is cached.
 - Nothing is stored in a database
 - Nothing is stored in the cloud
-- The algorithm generating the passwords is based on SHA256
 - If your secret passphrase is unique, then your passwords are unique to you and to the websites that you use them on.
 - All your passwords can be generated again, as long as your secret passphrase and the website name are the same as when you first generated your passwords.
 - You don't type your username into the Smart Password Generator. If a hacker somehow intercepts the passwords as they are generated, there is no direct correlation to your username. A password without a username is worthless.
+
+### Why is it not safe?
+- If your secret isn't a strong password, it is possible to brute force the secret. Please use a long string of numbers, letters and special characters so prevent this.
 
 ### What is the "Verify" image in the upper right corner?
 1. It is important that you type your secret passphrase exactly the same every time you use Smart Password Maker.
@@ -51,9 +55,11 @@ Copy files from the html folder to your webserver. Subdirectories are not needed
 4. Now you can verify that you have typed your secret correctly, just by looking at the Verify image. If it looks different than usual, you must have typed a different secret.
 
 ### Does this solve every problem with passwords?
-No! Some websites don't allow certain characters. You will have to leave out those characters from your generated password.
+No! Some websites don't allow certain characters. You will have to leave out those characters from your generated password. When you try to log in and your generated password doesn't match the password on the website, you will get an error message. You will probably not remember what you changed in the password. That's a problem.
 
-When your generated password doesn't match the password on the website, you will get an error message. You will probably not remember what you changed in the password.
+If a website suddenly requires you to change your password, you can't use the generated password anymore. One solution could be to add a "2" to the website name in the generator. (eg. type "google2" instead of "google"). In the future, if the website says the password is wrong, you try adding the "2" to the website name.
+
+Some websites use the same login as another. For example you normally use your Google-password to log in to YouTube. That means you have to remember that Google is the word you type into the App/Website field, even if it is YouTube you want to log in to. That can be a problem for some people.
 
 Some websites may require longer passwords. That's a problem.
 
